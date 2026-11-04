@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucky Spin KAWASANTOTO</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#302310,#100d08 48%,#050505);
+  color:#fff;
+  font-family:Arial,sans-serif;
+  text-align:center;
+  padding:25px 15px;
+}
+.container{max-width:650px;margin:auto}
+.logo{
+  color:#f5d68a;
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-shadow:0 0 15px #d6a441;
+  margin:15px 0 35px;
+}
+h1{
+  font-size:38px;
+  color:#f4d17f;
+  text-shadow:0 0 18px #b88630;
+  margin-bottom:10px;
+}
+.subtitle{color:#c9b995;font-size:13px;margin-bottom:30px}
+.wheel-wrap{
+  width:min(88vw,390px);
+  aspect-ratio:1;
+  margin:30px auto;
+  position:relative;
+  padding:10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#fff0b5,#95651b,#f5d77d);
+  box-shadow:0 0 30px #c18a35;
+}
+#wheel{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  border:4px solid #f5d88f;
+  position:relative;
+  overflow:hidden;
+  transition:transform 5s cubic-bezier(.12,.75,.12,1);
+  background:conic-gradient(
+    #d6a53e 0deg 60deg,
+    #191510 60deg 120deg,
+    #b98225 120deg 180deg,
+    #292016 180deg 240deg,
+    #e1bb62 240deg 300deg,
+    #17120b 300deg 360deg
+  );
+}
+.label{
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+}
+.label span{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:95px;
+  margin-left:-47px;
+  margin-top:-9px;
+  font-size:11px;
+  font-weight:bold;
+  color:white;
+  text-shadow:1px 2px 4px black;
+}
+.pointer{
+  position:absolute;
+  z-index:5;
+  top:-5px;
+  left:50%;
+  transform:translateX(-50%);
+  border-left:16px solid transparent;
+  border-right:16px solid transparent;
+  border-top:35px solid #fff0b5;
+  filter:drop-shadow(0 3px 4px #000);
+}
+.center{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ffe7a0,#a87520);
+  border:4px solid #fff0b5;
+  color:#281b08;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:2;
+  font-weight:900;
+}
+.center b{font-size:25px}
+.center small{font-size:9px;letter-spacing:2px}
+button{
+  background:linear-gradient(110deg,#95651b,#f7dc91,#b17b20);
+  border:1px solid #ffe5a4;
+  padding:16px 40px;
+  border-radius:5px;
+  color:#1a1005;
+  font-weight:900;
+  font-size:14px;
+  letter-spacing:2px;
+  cursor:pointer;
+  box-shadow:0 0 20px #bd8a35;
+}
+button:disabled{opacity:.5;cursor:not-allowed}
+#result{
+  display:none;
+  margin:25px auto;
+  padding:18px;
+  max-width:350px;
+  border:1px solid #d7ad55;
+  background:#21190d;
+  border-radius:10px;
+}
+#result h2{color:#f4d17f;margin:8px}
+.info{
+  margin:30px auto;
+  padding:20px;
+  border:1px solid #61491f;
+  border-radius:12px;
+  background:#100e0a;
+  text-align:left;
+}
+.info h3{color:#eac879;margin-bottom:15px}
+.prize{
+  display:flex;
+  justify-content:space-between;
+  padding:11px 0;
+  border-bottom:1px solid #ffffff15;
+  font-size:13px;
+}
+.note{
+  color:#a99d85;
+  font-size:11px;
+  line-height:1.8;
+  margin-top:18px;
+}
+footer{
+  color:#80745f;
+  font-size:10px;
+  line-height:1.8;
+  margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="logo">✦ KAWASANTOTO ✦</div>
+
+  <h1>LUCKY SPIN</h1>
+  <p class="subtitle">
+    PUTAR RODA DAN TEMUKAN HADIAH SALDO EVENT!
+  </p>
+
+  <div class="wheel-wrap">
+    <div class="pointer"></div>
+
+    <div id="wheel">
+      <div class="label"><span>50.000</span></div>
+      <div class="label"><span>100.000</span></div>
+      <div class="label"><span>250.000</span></div>
+      <div class="label"><span>500.000</span></div>
+      <div class="label"><span>1.000.000</span></div>
+      <div class="label"><span>3.000.000</span></div>
+
+      <div class="center">
+        <b>K</b>
+        <small>SPIN</small>
+      </div>
+    </div>
+  </div>
+
+  <button id="spinBtn" onclick="spin()">
+    PUTAR SEKARANG
+  </button>
+
+  <div id="result">
+    <p>SELAMAT! HASIL PUTARAN KAMU:</p>
+    <h2 id="prize"></h2>
+    <p style="font-size:12px;color:#c9b995">
+      Terima kasih telah mengikuti EVENT INI !
+    </p>
+  </div>
+
+  <div class="info">
+    <h3>✦ DAFTAR HADIAH ✦</h3>
+
+    <div class="prize">
+      <span>HADIAN SALDO 50RIBU</span><b>10%</b>
+    </div>
+    <div class="prize">
+      <span>HADIAH SALDO 100RIBU</span><b>35%</b>
+    </div>
+    <div class="prize">
+      <span>HADIAH SALDO 250RIBU</span><b>10%</b>
+    </div>
+    <div class="prize">
+      <span>HADIAH SALDO 500RIBU</span><b>25%</b>
+    </div>
+    <div class="prize">
+      <span>HADIAH SALDO 1JUTA</span><b>10%</b>
+    </div>
+    <div class="prize">
+      <span>HADIAH SALDO 3JUTA</span><b>10%</b>
+    </div>
+
+    <p class="note">
+      Promo GRATIS.  memerlukan deposit atau pembayaran.
+      Hadiah merupakan contoh hadiah hadiah saldo tunai.
+      Syarat dan ketentuan berlaku.
+    </p>
+  </div>
+
+  <footer>
+    © 2026 KAWASANTOTO<br>
+    18+ • PROMO GRATIS
+  </footer>
+
+</div>
+
+<script>
+const prizes = [
+  {name:"SELAMAT KAMU MENDAPATKAN SALDO 50RB",weight:10},
+  {name:"SELAMAT KAMU MENDAPATKAN SALDO 100RB",weight:35},
+  {name:"SELAMAT KAMU MENDAPATKAN SALDO 250RB",weight:10},
+  {name:"SELAMAT KAMU MENDAPATKAN SALDO 500RB",weight:25},
+  {name:"SELAMAT KAMU MENDAPATKAN SALDO 1JUTA",weight:10},
+  {name:"SELAMAT KAMU MENDAPATKAN SALDO 3JUTA",weight:10}
+];
+
+const wheel = document.getElementById("wheel");
+const button = document.getElementById("spinBtn");
+const result = document.getElementById("result");
+
+let rotation = 0;
+let spinning = false;
+let spinsLeft = 3;
+
+document.querySelectorAll(".label").forEach((el,i)=>{
+  const angle = i * 60 + 30;
+  el.style.transform = `rotate(${angle}deg)`;
+  el.querySelector("span").style.transform = "translateY(-125px) rotate(90deg)";
+});
+
+function choosePrize(){
+  const total = prizes.reduce((sum,p)=>sum+p.weight,0);
+  let random = Math.random()*total;
+
+  for(const p of prizes){
+    random -= p.weight;
+    if(random < 0) return p.name;
+  }
+  return prizes[0].name;
+}
+
+function spin(){
+  if(spinning || spinsLeft <= 0) return;
+
+  spinning = true;
+  button.disabled = true;
+  result.style.display = "none";
+
+  const selected = choosePrize();
+  const index = prizes.findIndex(p=>p.name===selected);
+
+  const segment = 60;
+  const centerAngle = index*segment + segment/2;
+  const target = 360-centerAngle;
+  const current = ((rotation%360)+360)%360;
+  const extra = 6*360 + ((target-current+360)%360);
+
+  rotation += extra;
+  wheel.style.transform = `rotate(${rotation}deg)`;
+
+  setTimeout(()=>{
+    document.getElementById("prize").textContent = selected;
+    result.style.display = "block";
+
+    spinsLeft--;
+    button.textContent = spinsLeft > 0
+      ? `PUTAR LAGI (${spinsLeft})`
+      : "KESEMPATAN HABIS";
+
+    button.disabled = spinsLeft <= 0;
+    spinning = false;
+  },5200);
+}
+</script>
+
+</body>
+</html>
